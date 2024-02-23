@@ -1,0 +1,77 @@
+<footer>
+    <div class="footerdiv">
+        <div class="footerust">
+            <ul>
+                <li><a href="{% url 'home' %}">AnaSayfa</a></li>
+                <li><a href="{% url 'call_garson' %}">Garson Çağır</a></li>
+            </ul>
+            
+        </div>
+        <hr width="100%">
+        <div class="footeralt">
+            <p> © 2024 Sarıyer, Inc - Designed by Tarsus üniversitesi Dijital Dönüşüm Ofisi</p>
+        </div>
+    </div>
+</footer>
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    footer {
+        font-family: "Roboto", sans-serif;
+        color: black;
+    }
+    .footerdiv {
+        margin-top: 120px;
+        background-color: white;
+        padding: 30px;
+        height: 150px;
+    }
+    .footerdiv a {
+        color: black;
+    }
+    .footerdiv p {
+        color: black;
+    }
+    .footerust {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .footerdiv ul {
+        display: flex;
+    }
+    .footerdiv ul li {
+        margin-right: 10px;
+        margin-left: 10px;
+        font-weight: 530;
+        margin-bottom: 20px;
+        text-decoration: underline;
+    }
+    .footeralt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 30px;
+        font-size: small;
+    }
+    @media screen and (max-width: 768px) {
+        .footerdiv ul li {
+            margin-right: 10px;
+            margin-left: 10px;
+            font-weight: 530;
+            margin-bottom: 20px;
+            text-decoration: underline;
+            font-size: small;
+        }
+        .footeralt {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 30px;
+            font-size: 10px;
+        } 
+    }
+</style>

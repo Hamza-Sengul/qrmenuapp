@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="baslik">
+    <h1>{{ category.name }}</h1>
+</div>
+<section>
+    <div class="urunler">
+        {% for product in products %}
+          
+            <div class="urun">
+                <div class="urunimg">
+                    <img src="{{ product.image.url }}" alt="Resim açıklaması" width="300px">
+                </div>
+                <div class="urunname">
+                    <a href="#">{{ product.name }} </a>
+                </div>
+                <div class="urunprice">
+                    <a href="#">{{ product.price }} TL</a>
+                </div>
+                <hr style="margin-top: 20px;opacity:0.5;">
+                <div class="urunaciklama">
+                    <p>{{ product.description }}</p>
+                </div>
+                <div class="sure">
+                    <a href="#"> <i class="fa-regular fa-clock"></i>{{ product.service_duration }}</a>
+                </div>
+            </div>
+       
+        {% endfor %}
+    </div>
+</section>
+    <style>
+        .baslik {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            text-decoration: underline;
+        }
+        .baslik h1::first-letter {
+            text-transform: uppercase;
+        }
+        .urunler {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            padding: 0 100px 0 100px;
+        }
+        .urun {
+            background-color: white;
+            border-radius: 10px;
+            width: 250px;
+            height: 380px;
+            color: black;
+            position: relative;
+        }
+        .urun a {
+            color: black;
+        }
+        .urun img {
+            width: 250px;
+            height: 220px;
+            border-radius: 10px 10px 0 0;
+        }
+        .urunname {
+            margin-top: 20px;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+        .urunname::first-letter {
+            text-transform: uppercase;
+        }
+        .urunprice {
+            margin-top: 10px;
+            margin-left: 20px;
+            font-weight: 550;
+        }
+        .urunprice a {
+            color: orange;
+        }
+        .urunaciklama {
+            margin-top: 10px;
+            margin-left: 20px;
+            font-size: small;
+        }
+        .sure {
+            position: absolute;
+            background-color: red;
+            border-radius: 4px 4px 10px 4px;
+            padding: 10px;
+            bottom: 0;
+            right: 0;
+            color: white;
+            width: 60px;
+        }
+        .sure a {
+            color: white;
+            font-weight: 600;
+        }
+        .sure i {
+            margin-right: 5px;
+            color: white;
+        }
+        @media screen and (max-width: 768px)  {
+            .urunler {
+                display: grid;
+                grid-template-columns: repeat(1,1fr);
+                padding: 0 0px 0 0px;
+                row-gap: 30px;
+            }
+            section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+
+{% endblock %}
+

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+<!-- <h1>Garson Çağır</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Çağır</button>
+</form> -->
+<div class="form">
+    <div class="form2">
+        <h1>Garson Çağır</h1>
+    <form id="call-garson-form" method="post" action="/call-garson/">
+        {% csrf_token %}
+        <label for="id_table_number"><a href="#" style="text-decoration: underline;">Masa Numarası:</a></label> <br>
+        <input type="text" placeholder="Masa numarası..." name="table_number" id="id_table_number"> <br>
+        <button type="submit">Çağır</button>
+    </form>
+    <div class="uyari">
+        <h3 style="margin-top: 10px;">Uyarı!</h3>
+        <p style="font-size: small;">Doğru masa numarası girdiğinizden emin olunuz.</p>
+    </div>
+    </div>
+</div>
+
+<script>
+    // Form gönderildiğinde onay mesajını göster
+    document.getElementById('call-garson-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Formun normal davranışını engelle
+        var tableNumber = document.getElementById('id_table_number').value;
+        var confirmMessage = "Masa numaranız " + tableNumber + " doğru mu?";
+        if (confirm(confirmMessage)) {
+            // Onaylandıysa formu gönder
+            this.submit();
+        } else {
+            // Onaylanmadıysa uyarıyı göster
+            document.querySelector('.uyari').style.display = 'block';
+        }
+    });
+
+    // Onaylananı işle
+    document.getElementById('confirm-button').addEventListener('click', function() {
+        document.getElementById('call-garson-form').submit();
+    });
+
+    // İptal edileni işle
+    document.getElementById('cancel-button').addEventListener('click', function() {
+        document.querySelector('.uyari').style.display = 'none';
+    });
+</script>
+<style>
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form2 {
+        display: flex;
+        flex-direction: column;
+        background-color: #C63D2F;
+        padding: 30px;
+        border-radius: 30px;
+        width: 350px;
+        height: 400px;
+    }
+    .form2 h1 {
+        margin-bottom: 40px;
+    }
+    .form2 input {
+        margin-top: 10px;
+        border: none;
+        border-radius: 6px;
+        padding: 6px;
+        width: 100%;
+    }
+    .form2 button {
+        border: none;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 6px;
+        width: 100px;
+        background-color: rgb(26,187,155);
+        color: white;
+        font-weight: 550;
+    }
+</style>
+{% endblock %}
